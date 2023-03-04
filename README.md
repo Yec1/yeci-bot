@@ -1,6 +1,9 @@
 # Yeci
 
-A Discord music bot that can play music with shards.
+A Discord music bot that can play music with shards. 
+Support languages now have zh-TW and en
+
+Invite my [Bot](https://discord.com/api/oauth2/authorize?client_id=1018637433044213853&permissions=415591943505&scope=bot%20applications.commands)
 
 ## Requirements
 
