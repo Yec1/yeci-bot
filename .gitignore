@@ -1,0 +1,13 @@
+node_modules
+croxydb
+
+.env
+.bash_profile
+croxydb.json
+test.js
+.DS_Store
+
+# Lock File #
+package-lock.json
+pnpm-lock.yaml
+yarn.lock

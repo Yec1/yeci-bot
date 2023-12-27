@@ -1,19 +1,12 @@
 const { client } = require("../index.js");
 const { Player } = require("discord-player");
-const { ActionRowBuilder, WebhookClient, EmbedBuilder } = require("discord.js");
+const { ActionRowBuilder, EmbedBuilder } = require("discord.js");
 const { getComponent } = require("../utils/components.js");
-const moment = require("moment-timezone");
-const webhook = new WebhookClient({ url: process.env.ERRWEBHOOK });
+
 const player = Player.singleton(client, {
   queryCache: null,
-  ytdlOptions: {
-    requestOptions: {
-      headers: {
-        cookie: process.env.COOKIE,
-      },
-    },
-  },
 });
+
 const { pause, resume, previous, stop, skip, loop, loopt, loopq, refresh } =
   getComponent();
 
@@ -29,17 +22,6 @@ player.events.on("error", (queue, error) => {
     queue.metadata.send({
       embeds: [new EmbedBuilder().setDescription("An error appeared!")],
     });
-  webhook.send({
-    embeds: [
-      new EmbedBuilder().setDescription(
-        `\`\`\`ini\n${moment()
-          .tz("Asia/Taipei")
-          .format("h:mm:ss a")}\nServer [ ${
-          queue.guild.name
-        } ] \n[ ${error} ]\n\`\`\``
-      ),
-    ],
-  });
 });
 
 player.events.on("playerStart", async (queue, track) => {

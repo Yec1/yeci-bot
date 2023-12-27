@@ -1,12 +1,13 @@
-const { client } = require("./index.js");
+const dotenv = require("dotenv");
 const { ClusterManager, HeartbeatManager } = require("discord-hybrid-sharding");
+dotenv.config();
 
 const manager = new ClusterManager(`${process.cwd()}/src/index.js`, {
   totalShards: "auto",
   totalClusters: "auto",
   shardsPerClusters: 6,
   mode: "worker",
-  token: client.config.TOKEN,
+  token: process.env.TOKEN,
 });
 
 manager.extend(

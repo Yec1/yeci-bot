@@ -1,7 +1,8 @@
+const dotenv = require("dotenv");
 const { Collection } = require("discord.js");
 const { client } = require("./index.js");
 const { ClusterClient } = require("discord-hybrid-sharding");
-const { client } = require("../config.js");
+dotenv.config();
 
 client.cluster = new ClusterClient(client);
 client.commands = {
@@ -14,6 +15,4 @@ client.cluster.on("ready", async () => {
   require("./core/index.js")(client);
 });
 
-client.config = config;
-
-client.login(config.TOKEN);
+client.login(process.env.TOKEN);
