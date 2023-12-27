@@ -25,7 +25,7 @@ npm install
 
 ```bash
 # Fill config
-Rename config.example.js to config.js and Fill.
+Rename .env.example to .env and fill your bot token.
 # Start Bot
 node . or node ./src/Cluster.js
 ```
